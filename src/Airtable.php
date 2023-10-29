@@ -18,10 +18,11 @@ class Airtable
         return $this->api->get($id);
     }
 
-    public function create($data)
+    public function create($data, $massUpdate = false)
     {
-        return $this->api->post($data);
+        return $this->api->post($data, $massUpdate);
     }
+
 
     /**
      * @param  mixed  $args  (string) $id, $data | (array) $data

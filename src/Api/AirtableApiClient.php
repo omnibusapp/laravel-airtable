@@ -102,11 +102,16 @@ class AirtableApiClient implements ApiClient
         return collect($records);
     }
 
-    public function post($contents = null)
+    public function post($contents = null, $massCreate = false)
     {
         $url = $this->getEndpointUrl();
 
-        $params = ['fields' => (object) $contents, 'typecast' => $this->typecast];
+        if ($massCreate) {
+            return $this->massUpdate('post', ['records' => $contents]);
+        } else {
+            $params = ['fields' => (object) $contents, 'typecast' => $this->typecast];
+        }
+
 
         return $this->decodeResponse($this->client->post($url, $params));
     }

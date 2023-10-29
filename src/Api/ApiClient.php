@@ -6,7 +6,7 @@ interface ApiClient
 {
     public function get(string $id = null);
 
-    public function post($contents = null);
+    public function post($contents = null, $massUpdate = false);
 
     public function put(string $id, $contents = null);
 
