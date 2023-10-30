@@ -18,11 +18,15 @@ class Airtable
         return $this->api->get($id);
     }
 
-    public function create($data, $massUpdate = false)
+    public function create($data, $massCreate = false)
     {
-        return $this->api->post($data, $massUpdate);
+        return $this->api->post($data, $massCreate);
     }
 
+    public function upsert(array $data, array $fieldsToMergeOn)
+    {
+        return $this->api->upsert($data, $fieldsToMergeOn);
+    }
 
     /**
      * @param  mixed  $args  (string) $id, $data | (array) $data
